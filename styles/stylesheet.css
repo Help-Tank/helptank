@@ -2,7 +2,8 @@
 
 }
 body {
-    background-color: #ef3131;
+    /*background-color: #ef3131;*/
+    background: linear-gradient(135deg, #ef3131, #e01f1f);
 }
 
 .resource-panel {
@@ -10,37 +11,22 @@ body {
     justify-content: center;
 }
 
+.shelter {
+    margin-top: 5%;
+}
 
 /*     NAV-BAR          */
 .navbar-custom {
-    background-color: #95c4de;
-}
-
-
-.navbar .navbar-nav {
-    display: inline-block;
-    float: none;
-    vertical-align: top;
-}
-
-.navbar .navbar-collapse {
-    text-align: center !important;
-}
-
-.navbar-header {
-    float: left;
-    padding: 15px;
+    /*background-color: #95c4de;*/
     text-align: center;
-    width: 100%;
+    justify-content: center;
+    background: linear-gradient(135deg, #46b4ee, #32a2a8);
 }
-.navbar-brand {float:none;}
 
-.navbar{
-
-    font-size: 10px !important;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif !important;
-    font-weight: 600 !important;
+footer{
+    margin-top: 5%;
 }
+
 
 
 /*     OUR-BUTTONS         */
@@ -48,7 +34,11 @@ body {
 .card{
     margin-top: 5%;
     width: 80%;
-    background-color: #95c4de;
+    background: linear-gradient(90deg, #46b4ee, #32a2a8);
+}
+
+.mt-0 {
+    margin-top: 0 !important;
 }
 
 

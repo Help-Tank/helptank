@@ -27,10 +27,23 @@
 
     <!-- BootStrap -->
 
+
+    <!--    Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
     <!-- StyleSheet -->
     <link rel="stylesheet" href="styles/stylesheet.css">
+
+    <!--    google icon-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+
 
     <!--- J Query -->
 
@@ -85,17 +98,28 @@
 <!-- NAV BAR -->
 <!--            NAV BAR-->
 <!-- As a link -->
-<nav class="navbar navbar-custom">
+<nav class="navbar-custom">
     <!--    <a class="navbar-brand text-center" href="#">Help Tank</a>-->
     <a class="navbar-brand mx-auto" href="#">
-        <input type="image" src="imgs/helpmap.png" alt="Submit" width="150" height="150">
-        <input type="image" src="imgs/HelpTankLogo.png" alt="Submit" width="150" height="150">
-        <input type="image" src="imgs/shelter.png" alt="Submit" width="150" height="150">
-        <input type="image" src="imgs/foodlogo.png" alt="Submit" width="150" height="150">
-    </a>
+        <input type="image" src="imgs/helpmap.png" alt="Submit" width="150" height="150"></a>
+
+    <a class="navbar-brand mx-auto" href="#">
+        <input type="image" src="imgs/HelpTankLogo.png" alt="Submit" width="150" height="150"></a>
+
+        <a class="navbar-brand mx-auto" href="#">
+            <input type="image" src="imgs/shelter.png" alt="Submit" width="150" height="150"></a>
+
+    <a class="navbar-brand mx-auto" href="#">
+        <input type="image" src="imgs/foodlogo.png" alt="Submit" width="150" height="150"></a>
+    <a class="navbar-brand mx-auto" href="#">
+        <input type="image" src="imgs/freeWiFiZone.png" alt="Submit" width="150" height="150"></a>
+    <a class="navbar-brand mx-auto" href="#">
+        <input type="image" src="imgs/chargeStation.png" alt="Submit" width="150" height="150"></a>
+
 
 
 </nav>
+
 
 <!-- Media panel -->
 <!--<div class="container d-flex justify-content-center mediacontainer flavoursContainer">-->
@@ -105,6 +129,8 @@
 <div class="map">
     <div id='map' style='width: 100%; height: 600px;'></div>
 </div>
+
+
 <script>
     mapboxgl.accessToken = mapboxtoken;
     var map = new mapboxgl.Map({
@@ -115,93 +141,179 @@
     });
 
 
-    //Yes we can set the zoom after the map is drawn
-    //map.setZoom(20);
-
-    // geocode("1414 S Alamo St, San Antonio, TX 78210", mapboxtoken).then(function(results){
-    //     console.log("Restaurant coordinates", results);
-    //     var marker = new mapboxgl.Marker()
-    //         .setLngLat(results)
-    //         .setPopup(new mapboxgl.Popup({ offset: 25 })
-    //         .setHTML('<a>Halcyon</a>'))
-    //         .addTo(map)
-    //
-    // })
-
-    //
-    // geocode("701 S St Mary's St, San Antonio, TX 78204", mapboxtoken).then(function(results){
-    //     console.log("Restaurant coordinates", results);
-    //     var marker = new mapboxgl.Marker()
-    //         .setLngLat(results)
-    //         .setPopup(new mapboxgl.Popup({ offset: 25 })
-    //             .setHTML('<a>Filling Station</a>'))
-    //         .addTo(map);
-    // })
-
-    //
-    //
-    // geocode("4025 Broadway, San Antonio, TX 78209", mapboxtoken).then(function(results){
-    //     console.log("Restaurant coordinates", results);
-    //     var marker = new mapboxgl.Marker()
-    //         .setLngLat(results)
-    //         .setPopup(new mapboxgl.Popup({ offset: 25 })
-    //             .setHTML('<a>Hayden</a>'))
-    //         .addTo(map);
-    //
-    // })
-
-    var favFoods =
-        [
-            {
-                name: "The Hayden",
-                addr: "4025 Broadway, San Antonio, TX 78209",
-                contents: "The Hayden",
-            },
-            {
-                name: "The Filling Station",
-                addr: "701 S St Mary's St, San Antonio, TX 78204",
-                contents: "The Filling Station",
-            },
-            {
-                name: "Cullum's Attagirl Ice House",
-                addr: "726 E Mistletoe Ave, San Antonio, TX 78212",
-                contents: "Cullum's Attagirl Ice House",
-            },
-            {
-                name: "Burger Boy",
-                addr: "726 E Mistletoe Ave, San Antonio, TX 78212",
-                contents: "Burger Boy",
-            },
-            {
-                name: "Halcyon",
-                addr: "1414 S Alamo St, San Antonio, TX 78210",
-                contents: "Halcyon",
-            },
-            {
-                name: "Charging station",
-                addr: "29.424152, -98.493364",
-                contents: "Charging Sation",
-            },
-        ]
-
-    console.log(favFoods);
-
-    for (var i = 0; i < favFoods.length; i++){
-        console.log(favFoods[i])
-
-        var favfoodContents = favFoods[i].contents;
 
 
-        geocode(favFoods[i].addr, mapboxtoken).then(function(results){
-            console.log("Restaurant coordinates", results);
-            var marker = new mapboxgl.Marker()
-                .setLngLat(results)
-                .setPopup(new mapboxgl.Popup({ offset: 25 })
-                    .setHTML(favfoodContents))
-                .addTo(map);
 
-        })
+
+    var faveRestaurants = [
+        {
+            address: "5200 Enrique M. Barrera Pkwy, San Antonio, TX 78227",
+            popupHTML: "<h6>San Antonio Food Bank and DaisyCares</h6>" + "<p>The San Antonio food bank will know about current soup houses, Please call</p>" + "<h6>CALL FOR LOCAL SOUP KITCHENS</h6><a href=\"tel:210-431-8326\">210-431-8326<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>" + "<h6>Phone Number for DaisyCares</h6><a href=\"tel:210-872-2343\">210-872-2343<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+        },
+    ];
+
+    // var sushiSevenInfo = {
+    //     address: "19141 Stone Oak Pkwy #507 San Antonio, TX 78258",
+    //     popupHTML: "<p>Sushi Seven</p>"
+    // }
+
+    var markerOptions = {
+        color: "red",
+        scale: .9,
     }
+
+    var popupOptions = {
+        anchor: "top",
+    }
+
+
+
+    faveRestaurants.forEach(function(restaurant) {
+        geocode(restaurant.address, mapboxtoken).then(function(coordinates) {
+            var popup = new mapboxgl.Popup(popupOptions)
+                .setHTML(restaurant.popupHTML);
+            var marker = new mapboxgl.Marker(markerOptions)
+                .setLngLat(coordinates)
+                .addTo(map)
+                .setPopup(popup);
+        });
+    });
+
+
+    // charging stations
+
+
+    function chargeStation(){
+
+        var popup = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#fcba03;\">battery_charging_full</i><h6>Charge Station</h6><p>An excellent place to charge your phone</p>");
+        var marker = new mapboxgl.Marker({
+            color: "#fcba03",
+            draggable: false
+        })
+            .setLngLat([-98.493357, 29.424161 ])
+            .addTo(map)
+            .setPopup(popup);
+
+
+        var marker = new mapboxgl.Marker({
+            color: "#fcba03",
+            draggable: false
+        }).setLngLat([-98.494559, 29.424011 ])
+            .addTo(map)
+            .setPopup(popup);
+    }
+
+    chargeStation();
+
+
+    function freeWifiArea(){
+
+        var popup = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#4884fa;\">wifi</i><h6>Free Wifi ZONE</h6><p>This area has free WiFi</p>");
+        var marker = new mapboxgl.Marker({
+            color: "#4884fa",
+            draggable: false
+        })
+            .setLngLat([-98.493541, 29.424609])
+            .addTo(map)
+            .setPopup(popup);
+
+
+        var marker = new mapboxgl.Marker({
+            color: "#4884fa",
+            draggable: false
+        }).setLngLat([-98.489189, 29.427918])
+            .addTo(map)
+            .setPopup(popup);
+    }
+
+    freeWifiArea();
+
+
+    function shelters(){
+
+        var popupHaven = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#3fc82b;\">house</i><h6>Haven for Hope</h6><p>an immediate housing option</p>"+"<h6>Phone Number for Haven for Hope</h6><a href=\"tel:210-220-2100\">210-220-2100<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#3fc82b",
+            draggable: false
+        })
+            .setLngLat([-98.508117, 29.433568 ])
+            .addTo(map)
+            .setPopup(popupHaven);
+
+
+
+
+        var popupArmyMensShelter = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#3fc82b;\">house</i><h6>Dave Coy Salvation Army Mens Shelter</h6><p>an immediate housing option 3:00 PM – 8:00 PM, 7 days a week</p>"+"<h6>Contact Number</h6><a href=\"tel:+1210-226-2291\">+1210-226-2291<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#3fc82b",
+            draggable: false
+        })
+            .setLngLat([-98.479340, 29.427450])
+            .addTo(map)
+            .setPopup(popupArmyMensShelter);
+
+
+        var popupArmyWomensShelter = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#3fc82b;\">house</i><h6>Salvation Army Womens Shelter</h6><p>an immediate housing option 3:00 PM – 8:00 PM, 7 days a week</p>"+"<h6>Contact Number</h6><a href=\"tel:+12103522000\">+1210-352-2000<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#3fc82b",
+            draggable: false
+        })
+            .setLngLat([-98.498870, 29.434486])
+            .addTo(map)
+            .setPopup(popupArmyWomensShelter);
+
+
+
+
+
+
+
+
+    }
+
+    shelters();
+
+
+
+
+
+
+
+    /* Button Script */
+    document.getElementById("zoomInput5").addEventListener("click", function (event) {
+        map.zoomTo(5);
+    })
+
+    document.getElementById("zoomInput10").addEventListener("click", function (event) {
+        map.zoomTo(10);
+    })
+
+    document.getElementById("zoomInput20").addEventListener("click", function (event) {
+        map.setCenter([-98.4961558247, 29.6247386211])
+        map.zoomTo(20);
+    })
+
+    document.getElementById("hideMarkers").addEventListener("click", function (event) {
+        map.marker.remove;
+    })
+
+
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: {
+            color: 'red'
+        },
+        mapboxgl: mapboxgl
+    });
+
+    map.addControl(geocoder);
+
+
 
 
 
