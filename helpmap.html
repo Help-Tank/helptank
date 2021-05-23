@@ -21,9 +21,8 @@
     <link rel="icon" type="image/png" sizes="96x96" href="favcon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favcon/favicon-16x16.png">
     <link rel="manifest" href="favcon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="favcon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+
 
     <!-- BootStrap -->
 
@@ -100,21 +99,32 @@
 <!-- As a link -->
 <nav class="navbar-custom">
     <!--    <a class="navbar-brand text-center" href="#">Help Tank</a>-->
-    <a class="navbar-brand mx-auto" href="#">
-        <input type="image" src="imgs/helpmap.png" alt="Submit" width="150" height="150"></a>
+<!--    <a class="navbar-brand mx-auto" href="#">-->
+<!--        <input type="image" src="imgs/helpmap.png" alt="Submit" width="150" height="150"></a>-->
 
-    <a class="navbar-brand mx-auto" href="#">
-        <input type="image" src="imgs/HelpTankLogo.png" alt="Submit" width="150" height="150"></a>
+<!--    <a class="navbar-brand mx-auto" href="#">-->
+<!--        <input type="image" src="imgs/HelpTankLogo.png" alt="Submit" width="150" height="150"></a>-->
 
-        <a class="navbar-brand mx-auto" href="#">
-            <input type="image" src="imgs/shelter.png" alt="Submit" width="150" height="150"></a>
+    <a class="navbar-brand mx-auto" href="index.html" id="diectory">
+        <input type="image" src="imgs/helpTankDirectory.png" alt="Submit" width="90" height="90"></a>
 
-    <a class="navbar-brand mx-auto" href="#">
-        <input type="image" src="imgs/foodlogo.png" alt="Submit" width="150" height="150"></a>
-    <a class="navbar-brand mx-auto" href="#">
-        <input type="image" src="imgs/freeWiFiZone.png" alt="Submit" width="150" height="150"></a>
-    <a class="navbar-brand mx-auto" href="#">
-        <input type="image" src="imgs/chargeStation.png" alt="Submit" width="150" height="150"></a>
+    <a class="navbar-brand mx-auto" href="#" id="supplies">
+        <input type="image" src="imgs/supplies.png" alt="Submit" width="90" height="90"></a>
+
+    <a class="navbar-brand mx-auto" href="#" id="vetOwned">
+        <input type="image" src="imgs/vetOwned.png" alt="Submit" width="90" height="90"></a>
+
+        <a class="navbar-brand mx-auto" href="#" id="shelter">
+            <input type="image" src="imgs/shelter.png" alt="Submit" width="90" height="90"></a>
+
+    <a class="navbar-brand mx-auto" href="#" id="food">
+        <input type="image" src="imgs/foodlogo.png" alt="Submit" width="90" height="90"></a>
+
+    <a class="navbar-brand mx-auto" href="#" id="wifi">
+        <input type="image" src="imgs/freeWiFiZone.png" alt="Submit" width="90" height="90"></a>
+
+    <a class="navbar-brand mx-auto" href="#" id="charge">
+        <input type="image" src="imgs/chargeStation.png" alt="Submit" width="90" height="90"></a>
 
 
 
@@ -131,31 +141,65 @@
 </div>
 
 
+<!--                JQUERY-->
+
+
+
+
+
 <script>
+
+
+    $( document ).ready(function() {
+        console.log( "ready!" );
+
+
+
+        $(window).on('load', function() {
+            // foo();
+        });
+
+        $( "#wifi" ).click(function() {
+            freeWifiArea();
+            // alert( "Handler for .click() called." );
+        });
+
+        $( "#food" ).click(function() {
+            food();
+            // alert( "Handler for .click() called." );
+        });
+
+        $( "#charge" ).click(function() {
+            chargeStation();
+            // alert( "Handler for .click() called." );
+        });
+
+        $( "#shelter" ).click(function() {
+            shelters();
+            // alert( "Handler for .click() called." );
+        });
+
+        $( "#vetOwned" ).click(function() {
+            vetOwned();
+            // alert( "Handler for .click() called." );
+        });
+
+        $( "#supplies" ).click(function() {
+            supplies();
+            // alert( "Handler for .click() called." );
+        });
+
+    });
+
+
+
     mapboxgl.accessToken = mapboxtoken;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-98.48, 29.45],
-        zoom:10,
+        zoom:12,
     });
-
-
-
-
-
-
-    var faveRestaurants = [
-        {
-            address: "5200 Enrique M. Barrera Pkwy, San Antonio, TX 78227",
-            popupHTML: "<h6>San Antonio Food Bank and DaisyCares</h6>" + "<p>The San Antonio food bank will know about current soup houses, Please call</p>" + "<h6>CALL FOR LOCAL SOUP KITCHENS</h6><a href=\"tel:210-431-8326\">210-431-8326<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>" + "<h6>Phone Number for DaisyCares</h6><a href=\"tel:210-872-2343\">210-872-2343<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
-        },
-    ];
-
-    // var sushiSevenInfo = {
-    //     address: "19141 Stone Oak Pkwy #507 San Antonio, TX 78258",
-    //     popupHTML: "<p>Sushi Seven</p>"
-    // }
 
     var markerOptions = {
         color: "red",
@@ -168,16 +212,81 @@
 
 
 
-    faveRestaurants.forEach(function(restaurant) {
-        geocode(restaurant.address, mapboxtoken).then(function(coordinates) {
-            var popup = new mapboxgl.Popup(popupOptions)
-                .setHTML(restaurant.popupHTML);
-            var marker = new mapboxgl.Marker(markerOptions)
-                .setLngLat(coordinates)
-                .addTo(map)
-                .setPopup(popup);
+
+    function food() {
+
+
+        var faveRestaurants = [
+            {
+                address: "5200 Enrique M. Barrera Pkwy, San Antonio, TX 78227",
+                popupHTML: "<h6>San Antonio Food Bank and DaisyCares</h6>" + "<p>The San Antonio food bank will know about current soup houses, Please call</p>" + "<h6>CALL FOR LOCAL SOUP KITCHENS</h6><a href=\"tel:210-431-8326\">210-431-8326<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>" + "<h6>Phone Number for DaisyCares</h6><a href=\"tel:210-872-2343\">210-872-2343<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+            },
+            {
+                address: "724 Chestnut St, San Antonio, TX 78202",
+                popupHTML: "<h6>Church Under the Bridge</h6>" + "<p>This church offers meals everyday at 6:00pm</p>" + "<a href=\"tel:+210-569-4026\">+1210-569-4026<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+            },
+            {
+                address: "907 E Quincy St, San Antonio, TX 78215",
+                popupHTML: "<h6>San Antonio Rescue Mission</h6>" + "<p>Meals are offered everyday at 8:00pm</p>" + "<a href=\"tel:+1210-222-9736\">210-222-9736<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+            },
+            {
+                address: "319 W Travis St, San Antonio, TX, 78205 ",
+                popupHTML: "<h6>Downtown Care Hub</h6>" + "<p>Grab-n-go meals, face masks, and personal hygiene items are available at this location for our neighbors experiencing street homelessness during the COVID-19 pandemic.\n" +
+                    "\n" +
+                    " Mon-Sat, 11:00 am-4:30 pm\n" +
+                    "Sun, 9:00-11:00 am</p>" + "<a href=\"tel:+1210-222-9736\">210-222-9736<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+            },
+            {
+                address: " 230 E Travis St, San Antonio, TX, 78205",
+                popupHTML: "<h6>Warm Meals</h6>" + "<p>Sunday: 8:30 AM\n" +
+                    "Wednesday: 6:00 PM\n" +
+                    "Thursday: 12:00 PM\n" +
+                    "Friday: 12:00 PM</p>" + "<a href=\"tel:+1210-222-9736\">210-222-9736<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+            },
+            {
+                address: " 110 McCullough Ave, San Antonio, TX, 78215",
+                popupHTML: "<h6>Bridge Serve</h6>" + "<p>3rd Fri: 6:00 PM</p>" + "<a href=\"tel:+1936-714-2274\">936-714-2274<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>"
+            },
+        ];
+
+        // var sushiSevenInfo = {
+        //     address: "19141 Stone Oak Pkwy #507 San Antonio, TX 78258",
+        //     popupHTML: "<p>Sushi Seven</p>"
+        // }
+
+        var markerOptions = {
+            color: "red",
+            scale: .9,
+        }
+
+        var popupOptions = {
+            anchor: "top",
+        }
+
+
+        faveRestaurants.forEach(function (restaurant) {
+            geocode(restaurant.address, mapboxtoken).then(function (coordinates) {
+                var popup = new mapboxgl.Popup(popupOptions)
+                    .setHTML(restaurant.popupHTML);
+                var marker = new mapboxgl.Marker(markerOptions)
+                    .setLngLat(coordinates)
+                    .addTo(map)
+                    .setPopup(popup);
+            });
         });
-    });
+
+
+        var geocoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            marker: {
+                color: 'red'
+            },
+            mapboxgl: mapboxgl
+        });
+
+        map.addControl(geocoder);
+
+    }
 
 
     // charging stations
@@ -204,7 +313,7 @@
             .setPopup(popup);
     }
 
-    chargeStation();
+
 
 
     function freeWifiArea(){
@@ -228,7 +337,7 @@
             .setPopup(popup);
     }
 
-    freeWifiArea();
+
 
 
     function shelters(){
@@ -242,8 +351,6 @@
             .setLngLat([-98.508117, 29.433568 ])
             .addTo(map)
             .setPopup(popupHaven);
-
-
 
 
         var popupArmyMensShelter = new mapboxgl.Popup(popupOptions)
@@ -267,16 +374,126 @@
             .addTo(map)
             .setPopup(popupArmyWomensShelter);
 
-
-
-
-
-
+        var popupRescueMission = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#3fc82b;\">house</i><h6>San Antonio Resuce Mission</h6><p>an immediate housing option 5:30 PM – 5:30 AM, 7 days a week</p>"+"<h6>Contact Number</h6><a href=\"tel:+12102229736\">+1210- 222-9736<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#3fc82b",
+            draggable: false
+        })
+            .setLngLat([-98.485913, 29.439571])
+            .addTo(map)
+            .setPopup(popupRescueMission);
 
 
     }
 
-    shelters();
+
+
+
+
+
+    function supplies(){
+
+        var popupOutreach = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#E7C205;\">soap</i><h6>Veteran Outreach</h6><p>We provide clothing, shoes, and hygiene items to homeless veterans Mon-Fri, 8:00am-5:00pm </p>"+"<h6>Contact Number</h6><a href=\"tel:210-646-8408\">210-646-8408<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#E7C205",
+            draggable: false
+        })
+            .setLngLat([-98.493385, 29.432433])
+            .addTo(map)
+            .setPopup(popupOutreach);
+
+
+        var popupCareHub = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#E7C205;\">soap</i><h6>Downtown Care Hub</h6><p>face masks, and personal hygiene items are available at this location</p>"+"<h6>Contact Number</h6><a href=\"tel:+1210-226-2291\">+1210-226-2291<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#E7C205",
+            draggable: false
+        })
+            .setLngLat([-98.479340, 29.427450])
+            .addTo(map)
+            .setPopup(popupCareHub);
+
+
+        var popupArmyWomensShelter = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#E7C205;\">house</i><h6>Salvation Army Womens Shelter</h6><p>an immediate housing option 3:00 PM – 8:00 PM, 7 days a week</p>"+"<h6>Contact Number</h6><a href=\"tel:+12103522000\">+1210-352-2000<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#E7C205",
+            draggable: false
+        })
+            .setLngLat([-98.498870, 29.434486])
+            .addTo(map)
+            .setPopup(popupArmyWomensShelter);
+
+        var popupRescueMission = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#E7C205;\">house</i><h6>San Antonio Resuce Mission</h6><p>We provide clothing, soup, and other supplies</p>"+"<h6>Contact Number</h6><a href=\"tel:+12102229736\">+12102229736<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#e7c205",
+            draggable: false
+        })
+            .setLngLat([-98.485913, 29.439571])
+            .addTo(map)
+            .setPopup(popupRescueMission);
+
+
+    }
+
+
+
+
+
+    function vetOwned(){
+
+        var popup1Cybersecurity = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#115A07;\">flag</i><h6>1Cybersecurity, LLC</h6><p>\t\n" +
+                "In response to Department of Defense (DoD) growing need for compliance in Classified and Controlled Unclassified Information Risk Management Framework (RMF) Initatives. </p>"+"<h6>Contact Number</h6><a href=\"tel:210-885-8935\">210-885-8935<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#115A07",
+            draggable: false
+        })
+            .setLngLat([-98.462712, 29.474217])
+            .addTo(map)
+            .setPopup(popup1Cybersecurity);
+
+
+
+
+        var popup1iApparel = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#115A07;\">flag</i><h6>1i Apparel, LLC</h6><p>Apparel Goods</p>"+"<h6>Contact Number</h6><a href=\"tel:+210-807-8777\">+1210-807-8777<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#115A07",
+            draggable: false
+        })
+            .setLngLat([-98.391617,29.522251 ])
+            .addTo(map)
+            .setPopup(popup1iApparel);
+
+
+        var popupSecurity = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#115A07;\">flag</i><h6>4S Cyber Solutions, LLC</h6><p>The 4S Cyber Solutions team employs a collaborative, cross-discipline approach to craft cyber security tailored to your mission.</p>"+"<h6>Contact Number</h6><a href=\"tel:+18444735338\">+1844-473-5338<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#115A07",
+            draggable: false
+        })
+            .setLngLat([-98.498870, 29.434486])
+            .addTo(map)
+            .setPopup(popupSecurity);
+
+
+
+        var popupTech = new mapboxgl.Popup(popupOptions)
+            .setHTML("<i class=\"material-icons\" style=\"font-size:30px;color:#115A07;\">flag</i><h6>A2MV</h6><p>With over 20 years of experience in medical sales, we pride ourselves in being a leader in the field. As a Service Disabled Veteran Owned Small Business we engage in arranging for the worldwide acquisition and logistical distribution of personal protective equipment, medical and surgical supply. We provide fast, efficient, and responsive support for the various government branches of the United States of America..</p>"+"<h6>Contact Number</h6><a href=\"tel:+14698026505\">+1469-802-6505<i class=\"material-icons\" style=\"font-size:30px;color:black;\">phone</i></a>");
+        var marker = new mapboxgl.Marker({
+            color: "#115a07",
+            draggable: false
+        })
+            .setLngLat([-98.498870, 29.434486])
+            .addTo(map)
+            .setPopup(popupSecurity);
+
+
+    }
 
 
 
@@ -284,34 +501,27 @@
 
 
 
-    /* Button Script */
-    document.getElementById("zoomInput5").addEventListener("click", function (event) {
-        map.zoomTo(5);
-    })
 
-    document.getElementById("zoomInput10").addEventListener("click", function (event) {
-        map.zoomTo(10);
-    })
+    // /* Button Script */
+    // document.getElementById("zoomInput5").addEventListener("click", function (event) {
+    //     map.zoomTo(5);
+    // })
+    //
+    // document.getElementById("zoomInput10").addEventListener("click", function (event) {
+    //     map.zoomTo(10);
+    // })
+    //
+    // document.getElementById("zoomInput20").addEventListener("click", function (event) {
+    //     map.setCenter([-98.4961558247, 29.6247386211])
+    //     map.zoomTo(20);
+    // })
+    //
+    // document.getElementById("hideMarkers").addEventListener("click", function (event) {
+    //     map.marker.remove;
+    // })
 
-    document.getElementById("zoomInput20").addEventListener("click", function (event) {
-        map.setCenter([-98.4961558247, 29.6247386211])
-        map.zoomTo(20);
-    })
-
-    document.getElementById("hideMarkers").addEventListener("click", function (event) {
-        map.marker.remove;
-    })
 
 
-    var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        marker: {
-            color: 'red'
-        },
-        mapboxgl: mapboxgl
-    });
-
-    map.addControl(geocoder);
 
 
 
@@ -333,7 +543,7 @@
 
 <!--- Scripts --->
 
-<script src="javascript/js.js"></script>
+<!--<script src="javascript/js.js"></script>-->
 
 
 
