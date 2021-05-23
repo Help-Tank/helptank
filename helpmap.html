@@ -7,21 +7,21 @@
     <title>HelpMap</title>
 
      <!--    FAVCON -->
-    <link rel="apple-touch-icon" sizes="57x57" href="favcon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favcon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favcon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favcon/apple-icon-76x76.png">
+<!--    <link rel="apple-touch-icon" sizes="57x57" href="favcon/apple-icon-57x57.png">-->
+<!--    <link rel="apple-touch-icon" sizes="60x60" href="favcon/apple-icon-60x60.png">-->
+<!--    <link rel="apple-touch-icon" sizes="72x72" href="favcon/apple-icon-72x72.png">-->
+<!--    <link rel="apple-touch-icon" sizes="76x76" href="favcon/apple-icon-76x76.png">-->
     <link rel="apple-touch-icon" sizes="114x114" href="favcon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favcon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favcon/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favcon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favcon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favcon/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favcon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favcon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favcon/favicon-16x16.png">
-    <link rel="manifest" href="favcon/manifest.json">
-    <meta name="msapplication-TileImage" content="favcon/ms-icon-144x144.png">
+<!--    <link rel="apple-touch-icon" sizes="120x120" href="favcon/apple-icon-120x120.png">-->
+<!--    <link rel="apple-touch-icon" sizes="144x144" href="favcon/apple-icon-144x144.png">-->
+<!--    <link rel="apple-touch-icon" sizes="152x152" href="favcon/apple-icon-152x152.png">-->
+<!--    <link rel="apple-touch-icon" sizes="180x180" href="favcon/apple-icon-180x180.png">-->
+<!--    <link rel="icon" type="image/png" sizes="192x192"  href="favcon/android-icon-192x192.png">-->
+<!--    <link rel="icon" type="image/png" sizes="32x32" href="favcon/favicon-32x32.png">-->
+<!--    <link rel="icon" type="image/png" sizes="96x96" href="favcon/favicon-96x96.png">-->
+<!--    <link rel="icon" type="image/png" sizes="16x16" href="favcon/favicon-16x16.png">-->
+<!--    <link rel="manifest" href="favcon/manifest.json">-->
+<!--    <meta name="msapplication-TileImage" content="favcon/ms-icon-144x144.png">-->
 
 
     <!-- BootStrap -->
@@ -143,23 +143,60 @@
 
 <!--                JQUERY-->
 
+<!--<style>-->
+<!--    .popMessage {-->
+<!--        position: absolute;-->
+<!--        top: 50%;-->
+<!--        left: 50%;-->
+<!--        width: 400px; /* adjust as per your needs */-->
+<!--        height: 200px; /* adjust as per your needs */-->
+<!--        margin-left: -200px; /* negative half of width above */-->
+<!--        margin-top: -200px; /* negative half of height above */-->
+<!--        background: #afd3c1;-->
+<!--        text-align: center;-->
+<!--    }-->
+<!--    .msgText{-->
+<!--        margin-top: 15%;-->
+<!--    }-->
+<!--</style>-->
 
-
-
+<!--<div class="popMessage"><p class="msgText">Welcome to HELP-TANK</p></div>-->
 
 <script>
 
+    var currentMarkers=[];
+
+
+
+    function loadAll(){
+        freeWifiArea();
+        shelters();
+        vetOwned();
+        supplies();
+        chargeStation();
+        food();
+
+    }
 
     $( document ).ready(function() {
         console.log( "ready!" );
 
 
 
-        $(window).on('load', function() {
-            // foo();
-        });
+
+        // $(window).on('load', function() {
+        //
+        // });
+
+
+
 
         $( "#wifi" ).click(function() {
+            if (currentMarkers!==null) {
+                for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                    currentMarkers[i].remove();
+                }
+            }
             freeWifiArea();
             // alert( "Handler for .click() called." );
         });
@@ -285,11 +322,13 @@
         });
 
         map.addControl(geocoder);
+        currentMarkers.push(marker);
 
     }
 
 
     // charging stations
+
 
 
     function chargeStation(){
@@ -311,6 +350,8 @@
         }).setLngLat([-98.494559, 29.424011 ])
             .addTo(map)
             .setPopup(popup);
+
+        currentMarkers.push(marker);
     }
 
 
@@ -335,6 +376,7 @@
         }).setLngLat([-98.489189, 29.427918])
             .addTo(map)
             .setPopup(popup);
+        currentMarkers.push(marker);
     }
 
 
@@ -383,6 +425,7 @@
             .setLngLat([-98.485913, 29.439571])
             .addTo(map)
             .setPopup(popupRescueMission);
+        currentMarkers.push(marker);
 
 
     }
@@ -436,6 +479,7 @@
             .addTo(map)
             .setPopup(popupRescueMission);
 
+        currentMarkers.push(marker);
 
     }
 
@@ -492,6 +536,8 @@
             .addTo(map)
             .setPopup(popupSecurity);
 
+        currentMarkers.push(marker);
+
 
     }
 
@@ -540,6 +586,19 @@
 
 
 
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+    <i class="fas fa-gem me-3"></i>Help Tank
+    </h6>
+    <p>
+        Our Mission is to simplify veteran help resources. All in one space.
+    Thank's to the VETERANS CODE * A * THON CodeUp, Geekdom and CIV Tech | SA
+    </div>
+    | contacthelptank@gmail.com
+    <!-- Section: Social media -->
+
+</footer>
 
 <!--- Scripts --->
 
