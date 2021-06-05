@@ -122,8 +122,6 @@
 
 <body>
 
-
-<div id="overlayContainer" class="css-y1az1r ebyeq3w0"><div class="css-1g4yje1 e1n77zxg0"><div id="page" class="css-1ewq9bv e1x3dawq0"><button id="closeIconContainer" aria-label="close" class="css-16tfmn2 e1pmyuab0"><svg id="closeIconSvg" viewBox="0 0 45 45" color="#F80089" aria-hidden="true" class="css-txjorm e1pmyuab1"><line x1="5" x2="40" y1="5" y2="40"></line><line x1="5" x2="40" y1="40" y2="5"></line></svg></button><div id="contentframe" class="css-ib3kp4 e1x3dawq2"><div id="content" class="css-1o7xcy5 e1x3dawq4"><div id="fieldCaptureHeaderBlock" class="css-1yobj7u ehc29810"><div id="logo" class="css-afzmm8 eizr14t0"><img src="https://creatives.attn.tv/poppi/Logo%20Copy%202_6d1543a2f214528965f6dbb38225a024.png" aria-hidden="true" class="css-8kfknb eizr14t2"></div><h2 id="fieldCaptureHeadersContainer" class="css-rufoqb ehc29811"><span id="fieldcaptureheader1" color="#ec008c" font-size="2.25rem" letterspacing="0px" class="css-hpfjb4 ekxwqh01">Join the Prebiotic Party!</span><span id="fieldcaptureheader2" color="#ec008c" font-size="1.1rem" letterspacing="0px" class="css-ksnwb4 ekxwqh01">Enter your email below to get 15% off your first order!</span></h2></div><form id="fieldCaptureForm" novalidate="" action="ADVANCE" class="css-uh5uiz e2ivf3i0"><div><div id="input0" font-size="1rem" color="#000000" class="css-ykunuc ecim2yc0"><input id="input0input" autocomplete="email" pattern="^[\S]+@([\S]+\.[^\.\s\\]{2,})$" placeholder="Email Address" type="email" required="" title="" aria-labelledby="input0input-error" class="css-1edkxjz enwnmoy1"><label id="input0label" for="input0input" color="#000000" class="css-k3gj31 ecim2yc1">Email Address</label></div></div><div class="css-zx2w73 e2ivf3i2"><button id="ctabutton1" type="submit" class="css-106tloy e64fnjc0"><div class="css-8zb3ix e64fnjc3"><span id="ctabutton1header1" color="#FFFFFF" font-size="1.25rem" letterspacing="0px" class="css-zuggk6 ekxwqh01">Continue</span></div></button></div></form></div><div class="css-1j37aka e1n77zxg1"></div></div></div></div></div>
 <!-- NAV BAR -->
 <!--            NAV BAR-->
 <!-- As a link -->
@@ -213,11 +211,6 @@
 
 
 
-
-
-
-
-
         $( "#wifi" ).click(function() {
             if (currentMarkers!==null) {
                 for (var i = currentMarkers.length - 1; i >= 0; i--) {
@@ -229,26 +222,51 @@
         });
 
         $( "#food" ).click(function() {
+            if (currentMarkers!==null) {
+                for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                    currentMarkers[i].remove();
+                }
+            }
             food();
             // alert( "Handler for .click() called." );
         });
 
         $( "#charge" ).click(function() {
+            if (currentMarkers!==null) {
+                for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                    currentMarkers[i].remove();
+                }
+            }
             chargeStation();
             // alert( "Handler for .click() called." );
         });
 
         $( "#shelter" ).click(function() {
+            if(currentMarkers!==null){
+                for(var i = currentMarkers.length -1; i >=0; i--){
+                    currentMarkers[i].remove();
+                }
+            }
             shelters();
             // alert( "Handler for .click() called." );
         });
 
         $( "#vetOwned" ).click(function() {
+            if(currentMarkers!==null){
+                for(var i = currentMarkers.length -1; i >=0; i--){
+                    currentMarkers[i].remove();
+                }
+            }
             vetOwned();
             // alert( "Handler for .click() called." );
         });
 
         $( "#supplies" ).click(function() {
+            if(currentMarkers!==null){
+                for(var i = currentMarkers.length -1; i >=0; i--){
+                    currentMarkers[i].remove();
+                }
+            }
             supplies();
             // alert( "Handler for .click() called." );
         });
